@@ -53,6 +53,7 @@ func NewWallet(auth string) (Wallet, error) {
 	}
 	return s, nil
 }
+
 func WalletOfJson(jsonStr string) (Wallet, error) {
 	sw := &SWallet{}
 	if err := json.Unmarshal([]byte(jsonStr), sw); err != nil {
