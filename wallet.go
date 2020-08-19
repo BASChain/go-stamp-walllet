@@ -25,6 +25,7 @@ type Wallet interface {
 	SignJson(v interface{}) ([]byte, error)
 	Sign(v []byte) ([]byte, error)
 	ExportEth(auth, eAuth, path string) error
+	PriKey() *ecdsa.PrivateKey
 }
 
 type SWallet struct {
@@ -140,6 +141,10 @@ func (sw *SWallet) ExportEth(auth, eAuth, path string) error {
 		return fmt.Errorf("error writing new keyfile to disk: %v", err)
 	}
 	return nil
+}
+
+func (sw *SWallet) PriKey() *ecdsa.PrivateKey {
+	return sw.PrivateKey
 }
 
 func VerifyJsonSig(mainAddr common.Address, sig []byte, v interface{}) bool {
