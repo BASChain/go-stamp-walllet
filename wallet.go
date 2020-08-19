@@ -90,6 +90,7 @@ func (sw *SWallet) Open(auth string) bool {
 	}
 	keyBytes, err := keystore.DecryptDataV3(sw.Crypto, auth)
 	if err != nil {
+		fmt.Println(err)
 		return false
 	}
 
