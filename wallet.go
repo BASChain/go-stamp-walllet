@@ -152,8 +152,8 @@ func VerifyJsonSig(mainAddr common.Address, sig []byte, v interface{}) bool {
 	return mainAddr == RecoverJson(sig, v)
 }
 
-func VerifyAbiSig(mainAddr common.Address, sig []byte, msg []byte) bool {
-	signer, err := crypto.SigToPub(msg, sig)
+func VerifySig(mainAddr common.Address, sig []byte, hash []byte) bool {
+	signer, err := crypto.SigToPub(hash, sig)
 	if err != nil {
 		return false
 	}
